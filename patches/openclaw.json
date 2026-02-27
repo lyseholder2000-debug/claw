@@ -1,0 +1,79 @@
+{
+  "auth": {
+    "profiles": {
+      "anthropic:default": {
+        "provider": "anthropic",
+        "mode": "api_key"
+      }
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "claude-max-proxy": {
+        "baseUrl": "http://localhost:3456/v1",
+        "apiKey": "placeholder",
+        "api": "openai-completions",
+        "models": [
+          { "id": "claude-haiku-4-5", "name": "claude-haiku-4-5" },
+          { "id": "claude-sonnet-4-6", "name": "claude-sonnet-4-6" },
+          { "id": "claude-opus-4-6", "name": "claude-opus-4-6" }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "claude-max-proxy/claude-haiku-4-5"
+      },
+      "workspace": "/Users/andersfiltenborg/.openclaw/workspace",
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    }
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "da4881238aafdce24ccbeb7e24665eecaee99166cd676f11"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "calendar.add",
+        "contacts.add",
+        "reminders.add"
+      ]
+    }
+  },
+  "meta": {
+    "lastTouchedVersion": "2026.2.25",
+    "lastTouchedAt": "2026-02-26T00:00:00.000Z"
+  }
+}
