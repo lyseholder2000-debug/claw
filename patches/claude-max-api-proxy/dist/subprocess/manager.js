@@ -93,6 +93,7 @@ export class ClaudeSubprocess extends EventEmitter {
             "stream-json", // JSON streaming output
             "--verbose", // Required for stream-json
             "--include-partial-messages", // Enable streaming chunks
+            "--permission-mode", "bypassPermissions", // Allow file/folder creation and shell commands
             "--model",
             options.model, // Model alias (opus/sonnet/haiku)
             prompt, // Pass prompt as argument (more reliable than stdin)
